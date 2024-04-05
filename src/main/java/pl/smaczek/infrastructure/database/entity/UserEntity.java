@@ -3,6 +3,9 @@ package pl.smaczek.infrastructure.database.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+import java.util.Set;
+
 @Entity
 @Builder
 @NoArgsConstructor
@@ -28,6 +31,15 @@ public class UserEntity {
     @Column(name = "is_active")
     private Boolean isActive;
 
-    //todo - połączenie tabeli z userDetails
-    //todo - połączenie tabeli z restaurantDetails
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "user", cascade = CascadeType.ALL)
+    private Set<OrderEntity> order;
+
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_details_id")
+    private UserDetailsEntity userDetails;
+
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "restaurant_details_id")
+    private RestaurantDetailsEntity restaurantDetails;
+
 }

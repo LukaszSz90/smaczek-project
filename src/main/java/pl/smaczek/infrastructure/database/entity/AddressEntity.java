@@ -32,5 +32,10 @@ public class AddressEntity {
     @Column(name = "zip_code")
     private String zipCode;
 
-    //todo - poąłczenie tabeli adresu z user i restaurant
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "address")
+    private UserDetailsEntity userDetails;
+
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "address")
+    private RestaurantDetailsEntity restaurantDetails;
+
 }

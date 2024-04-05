@@ -39,15 +39,16 @@ public class RestaurantDetailsEntity {
     @Column(name = "delivery_cost")
     private BigDecimal deliveryCost;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "user_details")
     private UserEntity user;
+
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "address_id")
+    private AddressEntity address;
 
 //    @OneToOne(fetch = FetchType.LAZY)
 //    @JoinColumn(name = "delivery_detail_id")
 //    private DeliveryDetailsEntity deliveryDetails;
 
-
-    //todo połączenie tabeli z adresem
     //todo dodać listę posiłków w ofercie restauracji
 }
