@@ -11,7 +11,6 @@ import pl.smaczek.infrastructure.database.entity.UserEntity;
 @Setter
 @Getter
 @EqualsAndHashCode(of = "userDetailsId")
-@ToString(of = {"userDetailsId", "name", "surneme", "phone"})
 @Table(name = "user_details")
 public class UserDetailsEntity {
 

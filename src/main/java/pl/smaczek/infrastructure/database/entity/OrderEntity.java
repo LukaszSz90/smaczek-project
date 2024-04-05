@@ -15,6 +15,7 @@ import java.util.Set;
 @Getter
 @Setter
 @Builder
+@Table(name = "order")
 public class OrderEntity {
 
     @Id

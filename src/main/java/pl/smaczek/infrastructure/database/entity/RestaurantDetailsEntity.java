@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.math.BigDecimal;
+import java.util.Set;
 
 @Entity
 @Builder
@@ -12,7 +13,6 @@ import java.math.BigDecimal;
 @Setter
 @Getter
 @EqualsAndHashCode(of = "restaurantDetailsId")
-@ToString(of = {"restaurantDetailsId", "name"})
 @Table(name = "restaurant_details")
 public class RestaurantDetailsEntity {
 
@@ -46,9 +46,12 @@ public class RestaurantDetailsEntity {
     @JoinColumn(name = "address_id")
     private AddressEntity address;
 
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "restaurant_details", cascade = CascadeType.ALL)
+    private Set<MealEntity> meal;
+
 //    @OneToOne(fetch = FetchType.LAZY)
 //    @JoinColumn(name = "delivery_detail_id")
 //    private DeliveryDetailsEntity deliveryDetails;
 
-    //todo dodać listę posiłków w ofercie restauracji
+    //todo dodać warunki dostawy
 }

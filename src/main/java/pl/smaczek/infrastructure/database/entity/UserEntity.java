@@ -14,7 +14,6 @@ import java.util.Set;
 @Setter
 @EqualsAndHashCode(of = {"id","email"})
 @Table(name = "user")
-@ToString(of = {"userId", "email"})
 public class UserEntity {
 
     @Id
@@ -30,6 +29,9 @@ public class UserEntity {
 
     @Column(name = "is_active")
     private Boolean isActive;
+
+    @Column(name = "roles")
+    private String roles;
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "user", cascade = CascadeType.ALL)
     private Set<OrderEntity> order;
