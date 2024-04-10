@@ -35,10 +35,4 @@ public class UserDetailsEntity {
     @JoinColumn(name = "address_id")
     private AddressEntity address;
 
-//    @OneToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "user_id")
-//    private UserEntity user;
-
-    //todo - połączenie tabeli z address
-    //todo - połączenie z my_rating, order i favourite
 }

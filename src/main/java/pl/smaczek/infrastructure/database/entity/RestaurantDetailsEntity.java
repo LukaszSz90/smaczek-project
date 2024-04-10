@@ -33,12 +33,6 @@ public class RestaurantDetailsEntity {
     @Column(name = "open_hour")
     private String openHour;
 
-    @Column(name = "min_value_of_order")
-    private BigDecimal minValueOfDelivery;
-
-    @Column(name = "delivery_cost")
-    private BigDecimal deliveryCost;
-
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "user_details")
     private UserEntity user;
 
@@ -49,9 +43,8 @@ public class RestaurantDetailsEntity {
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "restaurant_details", cascade = CascadeType.ALL)
     private Set<MealEntity> meal;
 
-//    @OneToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "delivery_detail_id")
-//    private DeliveryDetailsEntity deliveryDetails;
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "delivery_id")
+    private DeliveryDetailsEntity deliveryDetails;
 
-    //todo dodać warunki dostawy
 }
